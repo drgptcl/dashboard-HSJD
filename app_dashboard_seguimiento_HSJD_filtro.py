@@ -208,14 +208,22 @@ st.sidebar.header("Conexión a Google Sheets")
 
 saved_cfg = load_local_config()
 
+# Coloca aquí la URL fija de tu Google Sheet por defecto
+DEFAULT_SHEET_URL = "https://docs.google.com/spreadsheets/d/TU_ID_DE_SHEET_AQUI/edit"
+DEFAULT_WORKSHEET = "Respuestas de formulario 1" # O déjala vacía "" si quieres la primera hoja
+
+# Si ya hay una config guardada localmente, la usa; si no, precarga la URL por defecto
+initial_sheet = saved_cfg.get("sheet_id", DEFAULT_SHEET_URL)
+initial_worksheet = saved_cfg.get("worksheet_name", DEFAULT_WORKSHEET)
+
 sheet_input = st.sidebar.text_input(
     "URL o ID del Google Sheet",
-    value=saved_cfg.get("sheet_id", ""),
+    value=initial_sheet,
     placeholder="https://docs.google.com/spreadsheets/d/…",
 )
 worksheet_input = st.sidebar.text_input(
     "Nombre de la hoja (worksheet)",
-    value=saved_cfg.get("worksheet_name", ""),
+    value=initial_worksheet,
     placeholder="Dejar en blanco para usar la primera hoja",
 )
 
