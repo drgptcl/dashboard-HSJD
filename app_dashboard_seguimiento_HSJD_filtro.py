@@ -223,7 +223,7 @@ saved_cfg = load_local_config()
 
 # Coloca aquí la URL fija de tu Google Sheet por defecto
 DEFAULT_SHEET_URL = "https://docs.google.com/spreadsheets/d/TU_ID_DE_SHEET_AQUI/edit"
-DEFAULT_WORKSHEET = "Respuestas de formulario 1" # O déjala vacía "" si quieres la primera hoja
+DEFAULT_WORKSHEET = "Sheet1" # O déjala vacía "" si quieres la primera hoja
 
 # Si ya hay una config guardada localmente, la usa; si no, precarga la URL por defecto
 initial_sheet = saved_cfg.get("sheet_id", DEFAULT_SHEET_URL)
