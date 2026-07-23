@@ -222,7 +222,7 @@ st.sidebar.header("Conexión a Google Sheets")
 saved_cfg = load_local_config()
 
 # Coloca aquí la URL fija de tu Google Sheet por defecto
-DEFAULT_SHEET_URL = "https://docs.google.com/spreadsheets/d/TU_ID_DE_SHEET_AQUI/edit"
+DEFAULT_SHEET_URL = "https://docs.google.com/spreadsheets/d/1yd_yTfsM0ZEjJ0U6JpqfbqSmHPyNaLtfkAu9OjvmkGE/edit"
 DEFAULT_WORKSHEET = "Sheet1" # O déjala vacía "" si quieres la primera hoja
 
 # Si ya hay una config guardada localmente, la usa; si no, precarga la URL por defecto
