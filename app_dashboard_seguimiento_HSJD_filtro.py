@@ -140,7 +140,20 @@ def extract_sheet_id(id_or_url: str) -> str:
 def fetch_sheet_df(sheet_id: str, worksheet_name: str, _cache_bust: int = 0) -> pd.DataFrame:
     gc = get_gspread_client()
     sh = gc.open_by_key(sheet_id)
-    ws = sh.worksheet(worksheet_name) if worksheet_name else sh.sheet1
+    
+    # Intenta buscar por nombre exacto; si falla o viene vacío, usa la primera pestaña
+    try:
+        if worksheet_name and worksheet_name.strip():
+            ws = sh.worksheet(worksheet_name.strip())
+        else:
+            ws = sh.sheet1
+    except gspread.exceptions.WorksheetNotFound:
+        st.warning(
+            f"⚠️ No se encontró la pestaña '{worksheet_name}'. "
+            "Cargando la primera hoja del documento por defecto."
+        )
+        ws = sh.sheet1
+
     records = ws.get_all_records()
     return pd.DataFrame(records)
 
